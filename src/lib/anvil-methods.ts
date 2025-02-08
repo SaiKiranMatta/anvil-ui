@@ -150,6 +150,18 @@ export const methodCategories = {
         params: [{ name: "address", type: "string", placeholder: "0x..." }],
         description: "Impersonate an address for sending transactions",
       },
+      stopImpersonatingAccount: {
+        name: 'Stop Impersonating',
+        method: async (address: string) => {
+          await rpcClient.sendRequest('anvil_stopImpersonatingAccount', [address]);
+          toast.success(`Stopped impersonating ${address}`);
+          return {
+            address
+          };
+        },
+        params: [{ name: 'address', type: 'string', placeholder: '0x...' }],
+        description: 'Stop impersonating an account'
+      },
     },
   },
   debug: {

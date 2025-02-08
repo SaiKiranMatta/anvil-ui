@@ -64,7 +64,28 @@ export const methodCategories = {
         },
         params: [{ name: "address", type: "string", placeholder: "0x..." }],
         description: "Returns the deployed bytecode at an address",
-      }
+      },
+      getStorageAt: {
+        name: "Get Storage At",
+        method: async (address: string, slot: string) => {
+          const value = await rpcClient.sendRequest("eth_getStorageAt", [
+            address,
+            slot,
+            "latest",
+          ]);
+          toast.success("Successfully fetched storage value");
+          return { slot, value };
+        },
+        params: [
+          { name: "address", type: "string", placeholder: "0x..." },
+          {
+            name: "slot",
+            type: "string",
+            placeholder: "Storage slot (e.g., 0x0)",
+          },
+        ],
+        description: "Returns the value from a storage slot at a given address",
+      },
     },
   },
   anvil: {

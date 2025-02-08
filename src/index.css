@@ -205,3 +205,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary);
 }
+
+::-webkit-scrollbar:horizontal{
+  height: 5px;
+}

@@ -2,6 +2,8 @@
 
 A modern web interface for interacting with Anvil, built with Vite, React, and shadcn/ui. This interface provides a user-friendly way to interact with Anvil's JSON-RPC methods, including standard Ethereum methods, Anvil-specific commands, and debugging features.
 
+![Anvil Web UI Screenshot](https://github.com/user-attachments/assets/fb545af4-6acb-42ee-80ed-448737c8d4a0)
+
 ## Features
 
 - 🌗 Light/Dark mode support
@@ -12,18 +14,23 @@ A modern web interface for interacting with Anvil, built with Vite, React, and s
 
 ## Available Methods
 
-### Standard Methods
 - Get Accounts: Retrieve all available accounts
 - Get Balance: Check ETH balance of any address
 - Get Block Number: Get current block number
-
-### Anvil Methods
+- Get Code: Returns the deployed bytecode at an address
+- Get Storage At: Returns the value from a storage slot at a given address
 - Set Balance: Modify an address's ETH balance
 - Mine Blocks: Mine a specified number of blocks
 - Impersonate Account: Impersonate any address for transactions
-
-### Debug Methods
+- Stop Impersonating: Stop impersonating an account
+- Set Code: Sets the contract code at a given address
+- Set Nonce: Sets the nonce of an address
+- Set Storage: Sets the storage value at a specific slot
 - Trace Transaction: Get detailed execution trace of a transaction
+- Take Snapshot: Takes a snapshot of the current chain state
+- Revert to Snapshot: Reverts the chain to a previous snapshot
+- Increase Time: Increases the next block timestamp by the specified number of seconds
+- Set Next Block Timestamp: Sets the timestamp for the next block
 
 ## Getting Started
 
@@ -100,3 +107,4 @@ methodName: {
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+

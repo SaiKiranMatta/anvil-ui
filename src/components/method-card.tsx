@@ -68,7 +68,7 @@ export function MethodCard({
   return (
     <div ref={setNodeRef} style={style} {...attributes}>
       <Card className="relative ">
-      <div className=" flex justify-end h-min absolute w-full pt-1 px-6">
+      <div className=" flex justify-end h-min absolute w-full pt-2 px-6">
             <Button
               variant="ghost"
               size="icon"

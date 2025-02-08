@@ -1,50 +1,102 @@
-# React + TypeScript + Vite
+# Anvil Web UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web interface for interacting with Anvil, built with Vite, React, and shadcn/ui. This interface provides a user-friendly way to interact with Anvil's JSON-RPC methods, including standard Ethereum methods, Anvil-specific commands, and debugging features.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🌗 Light/Dark mode support
+- 🔧 Easy interaction with Anvil's JSON-RPC methods
+- 🚀 Built with modern tools: Vite, React, TypeScript
+- 🎨 Styled with shadcn/ui components
+- 🔌 Configurable RPC endpoint
 
-## Expanding the ESLint configuration
+## Available Methods
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Standard Methods
+- Get Accounts: Retrieve all available accounts
+- Get Balance: Check ETH balance of any address
+- Get Block Number: Get current block number
 
-- Configure the top-level `parserOptions` property like this:
+### Anvil Methods
+- Set Balance: Modify an address's ETH balance
+- Mine Blocks: Mine a specified number of blocks
+- Impersonate Account: Impersonate any address for transactions
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Debug Methods
+- Trace Transaction: Get detailed execution trace of a transaction
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- An Anvil instance running locally (or another compatible Ethereum node)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/SaiKiranMatta/anvil-ui
+cd anvil-ui
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies:
+```bash
+yarn
 ```
+
+3. Configure the environment:
+```bash
+cp .env.example .env
+```
+
+Edit `.env` to set your RPC URL if different from the default:
+```
+VITE_RPC_URL=http://localhost:8545
+```
+
+4. Start the development server:
+```bash
+yarn dev
+```
+
+## Development
+
+### Project Structure
+```
+src/
+  ├── components/      # UI components
+  ├── lib/            # Core functionality
+  │   ├── anvil-methods.ts  # Method definitions
+  │   ├── rpc-client.ts     # RPC communication
+  │   └── utils.ts          # Helper functions
+  └── App.tsx         # Main application component
+```
+
+### Adding New Methods
+
+To add new Anvil methods, modify `lib/anvil-methods.ts`. Each method requires:
+
+```typescript
+methodName: {
+  name: 'Display Name',
+  method: async (params) => {
+    // Implementation
+  },
+  params: [
+    { name: 'paramName', type: 'string', placeholder: 'Parameter description' }
+  ],
+  description: 'Method description'
+}
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

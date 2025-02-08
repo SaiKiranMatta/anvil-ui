@@ -162,6 +162,19 @@ export const methodCategories = {
         params: [{ name: 'address', type: 'string', placeholder: '0x...' }],
         description: 'Stop impersonating an account'
       },
+      setCode: {
+        name: 'Set Code',
+        method: async (address: string, code: string) => {
+          await rpcClient.sendRequest('anvil_setCode', [address, code]);
+          toast.success('Successfully set code');
+          return { address, code };
+        },
+        params: [
+          { name: 'address', type: 'string', placeholder: '0x...' },
+          { name: 'code', type: 'string', placeholder: 'Contract bytecode' }
+        ],
+        description: 'Sets the contract code at a given address'
+      },
     },
   },
   debug: {

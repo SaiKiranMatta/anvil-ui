@@ -189,6 +189,20 @@ export const methodCategories = {
         ],
         description: 'Sets the nonce of an address'
       },
+      setStorageAt: {
+        name: 'Set Storage',
+        method: async (address: string, slot: string, value: string) => {
+          await rpcClient.sendRequest('anvil_setStorageAt', [address, slot, value]);
+          toast.success('Successfully set storage');
+          return { address, slot, value };
+        },
+        params: [
+          { name: 'address', type: 'string', placeholder: '0x...' },
+          { name: 'slot', type: 'string', placeholder: 'Storage slot (e.g., 0x0)' },
+          { name: 'value', type: 'string', placeholder: 'New value (32 bytes)' }
+        ],
+        description: 'Sets the storage value at a specific slot'
+      }
     },
   },
   debug: {

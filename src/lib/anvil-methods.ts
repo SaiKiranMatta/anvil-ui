@@ -175,6 +175,20 @@ export const methodCategories = {
         ],
         description: 'Sets the contract code at a given address'
       },
+      setNonce: {
+        name: 'Set Nonce',
+        method: async (address: string, nonce: string) => {
+          const nonceHex = toHex(parseInt(nonce));
+          await rpcClient.sendRequest('anvil_setNonce', [address, nonceHex]);
+          toast.success('Successfully set nonce');
+          return { address, nonce: parseInt(nonce) };
+        },
+        params: [
+          { name: 'address', type: 'string', placeholder: '0x...' },
+          { name: 'nonce', type: 'string', placeholder: 'New nonce value' }
+        ],
+        description: 'Sets the nonce of an address'
+      },
     },
   },
   debug: {

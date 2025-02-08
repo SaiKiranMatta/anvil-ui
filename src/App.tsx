@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { MethodSection } from "@/components/method-section";
 import { methodCategories } from "@/lib/anvil-methods";
 import { ModeToggle } from "./components/mode-toggle";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           ))}
         </main>
       </div>
+      <Toaster richColors />
     </ThemeProvider>
   );
 }
